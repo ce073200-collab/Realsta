@@ -1,0 +1,36 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { FavouritesProvider } from './context/FavouritesContext'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import Home from './pages/Home'
+import About from './pages/About'
+import Properties from './pages/Properties'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
+
+function App() {
+  return (
+    <FavouritesProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="app-wrapper">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/properties" element={<Properties />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </FavouritesProvider>
+  )
+}
+
+export default App
+
